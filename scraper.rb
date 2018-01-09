@@ -10,6 +10,8 @@ agent = Mechanize.new
 
 agent.request_headers = { 'accept' => 'application/vnd.bountysource+json; version=2'}
 
+puts OpenSSL::OPENSSL_VERSION
+
 # Certs from https://curl.haxx.se/ca/cacert.pem
 agent.agent.http.cert = File.expand_path './cacert.pem'
 
