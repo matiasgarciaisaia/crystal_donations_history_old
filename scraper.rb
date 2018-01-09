@@ -10,13 +10,16 @@ agent = Mechanize.new
 
 agent.request_headers = { 'accept' => 'application/vnd.bountysource+json; version=2'}
 
-puts OpenSSL::OPENSSL_VERSION
+# puts OpenSSL::OPENSSL_VERSION
 
-# Certs from https://curl.haxx.se/ca/cacert.pem
-agent.cert = File.expand_path './cacert.crt'
+# # Certs from https://curl.haxx.se/ca/cacert.pem
+# agent.cert = File.expand_path './cacert.crt'
 
 # Read in a page
-page = agent.get("https://api.bountysource.com/teams/crystal-lang")
+page = agent.get("https://api.bountysource.com/teams/crystal-lang") do |pag|
+  puts pag.inspect
+  pag
+end
 
 # Find somehing on the page using css selectors
 data = JSON.parse(page.body)
