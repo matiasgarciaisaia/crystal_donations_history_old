@@ -13,7 +13,8 @@ require 'json'
 uri = URI.parse("https://api.bountysource.com/teams/crystal-lang")
 https = Net::HTTP.new(uri.host,uri.port)
 https.use_ssl = true
-https.ca_file = File.expand_path './cacert.pem'
+https.verify_mode = OpenSSL::SSL::VERIFY_NONE
+# https.ca_file = File.expand_path './cacert.pem'
 req = Net::HTTP::Get.new(uri.path, initheader = {'accept' => 'application/vnd.bountysource+json; version=2'})
 res = https.request(req)
 puts res.body
