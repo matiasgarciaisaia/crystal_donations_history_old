@@ -5,10 +5,23 @@ require 'scraperwiki'
 require 'mechanize'
 require 'pry-byebug'
 require 'json'
+require 'uri'
+require 'net/http'
+require 'net/https'
+require 'json'
 
-agent = Mechanize.new
+uri = URI.parse("https://api.bountysource.com/teams/crystal-lang")
+https = Net::HTTP.new(uri.host,uri.port)
+https.use_ssl = true
+req = Net::HTTP::Get.new(uri.path, initheader = {'accept' => 'application/vnd.bountysource+json; version=2'})
+res = https.request(req)
+puts res.body
+exit
 
-agent.request_headers = { 'accept' => 'application/vnd.bountysource+json; version=2'}
+
+# agent = Mechanize.new
+
+# agent.request_headers = { 'accept' => 'application/vnd.bountysource+json; version=2'}
 
 # puts OpenSSL::OPENSSL_VERSION
 
