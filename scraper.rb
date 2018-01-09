@@ -13,7 +13,7 @@ agent.request_headers = { 'accept' => 'application/vnd.bountysource+json; versio
 puts OpenSSL::OPENSSL_VERSION
 
 # Certs from https://curl.haxx.se/ca/cacert.pem
-agent.agent.http.cert = 'https://curl.haxx.se/ca/cacert.pem'
+agent.agent.http.cert = File.expand_path './cacert.crt'
 
 # Read in a page
 page = agent.get("https://api.bountysource.com/teams/crystal-lang")
