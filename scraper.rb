@@ -9,7 +9,8 @@ require 'uri'
 require 'net/http'
 require 'net/https'
 require 'json'
-puts system('curl --version')
+
+puts system("curl 'https://api.bountysource.com/teams/crystal-lang?accepts_public_payins=true&include_support_offering=true&include_supporter_stats=true' -H 'Origin: https://salt.bountysource.com' -H 'Accept-Encoding: gzip, deflate, br' -H 'Accept-Language: en-US,en;q=0.9,es;q=0.8' -H 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36' -H 'Accept: application/vnd.bountysource+json; version=2' -H 'Referer: https://salt.bountysource.com/teams/crystal-lang' -H 'Connection: keep-alive' --compressed")
 return
 
 uri = URI.parse("https://api.bountysource.com/teams/crystal-lang")
