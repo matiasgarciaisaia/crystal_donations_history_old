@@ -9,6 +9,8 @@ require 'uri'
 require 'net/http'
 require 'net/https'
 require 'json'
+puts system('curl --version')
+return
 
 uri = URI.parse("https://api.bountysource.com/teams/crystal-lang")
 https = Net::HTTP.new(uri.host,uri.port)
